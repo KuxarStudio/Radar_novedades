@@ -8,15 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # --- AÑADIMOS ESTO PARA DAR PERMISOS DE ESCRITURA ---
+    permissions:
+      contents: write
+    # ---------------------------------------------------
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Para que no se queje de la versión
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
     - name: 📥 Descargando código del repositorio
-      uses: actions/checkout@v4 # Actualizado a v4
+      uses: actions/checkout@v4
 
     - name: 🐍 Configurando Python
-      uses: actions/setup-python@v5 # Actualizado a v5
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
@@ -35,6 +39,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add -f radar_data.db # El -f es la clave: FORZAMOS el guardado
+        git add -f radar_data.db
         git commit -m "Radar: Actualización automática de productos" || echo "No hay cambios para subir"
         git push
