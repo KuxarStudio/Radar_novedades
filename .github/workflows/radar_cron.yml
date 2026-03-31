@@ -2,20 +2,21 @@ name: Piloto Automatico Radar
 
 on:
   schedule:
-    # Se ejecuta todos los días a las 09:00 AM (Hora UTC)
     - cron: '0 9 * * *'
-  workflow_dispatch: # Esto permite darle al botón "Play" a mano desde GitHub
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Para que no se queje de la versión
 
     steps:
     - name: 📥 Descargando código del repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # Actualizado a v4
 
     - name: 🐍 Configurando Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5 # Actualizado a v5
       with:
         python-version: '3.10'
 
@@ -34,6 +35,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add radar_data.db
+        git add -f radar_data.db # El -f es la clave: FORZAMOS el guardado
         git commit -m "Radar: Actualización automática de productos" || echo "No hay cambios para subir"
         git push
