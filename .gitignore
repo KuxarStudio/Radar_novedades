@@ -1,0 +1,8 @@
+# Entornos virtuales
+venv/
+__pycache__/
+
+# Bases de datos y archivos generados
+radar_data.db
+reporte_diario.html
+*.log

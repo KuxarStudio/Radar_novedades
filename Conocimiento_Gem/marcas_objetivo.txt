@@ -1,0 +1,41 @@
+Marca,URL Oficial,Marca,URL Oficial
+Supreme,supremenewyork.com,Arc'teryx,arcteryx.com
+Palace,palaceskateboards.com,Stone Island,stoneisland.com
+Kith,kith.com,Salomon,salomon.com
+Corteiz,crtz.xyz,The North Face,thenorthface.com
+Stüssy,stussy.com,CP Company,cpcompany.com
+Aimé Leon Dore,aimeleondore.com,Nike (NSW),nike.com
+Fear of God,fearofgod.com,Adidas Originals,https://www.google.com/search?q=adidas.com
+BAPE,bape.com,New Balance,newbalance.com
+Off-White,off---white.com,Asics,asics.com
+Noah,noahny.com,Patta,patta.nl
+Nude Project,nudeproject.com,Denim Tears,denimtears.com
+Scuffers,scuffers.com,Hellstar,hellstar.com
+Eme Studios,emestudios.co,Represent,representclo.com
+Trikko,https://www.google.com/search?q=trikko.com,Paper Straight,paperstraight.com
+Caracas Merch,https://www.google.com/search?q=caracasmerch.com,Acronym,acrnm.com
+Carhartt WIP,carhartt-wip.com,Heron Preston,heronpreston.com
+Dickies,dickies.com,Palm Angels,palmangels.com
+Vans,vans.com,Brain Dead,wearebraindead.com
+Converse,converse.com,Daily Paper,dailypaperclothing.com
+Dr. Martens,https://www.google.com/search?q=drmartens.com,Awake NY,awakenyclothing.com
+Zara,zara.com,Lululemon,lululemon.com
+Mango,mango.com,Skims,skims.com
+Uniqlo,uniqlo.com,Alo Yoga,aloyoga.com
+H&M,hm.com,Nike Training,nike.com
+Massimo Dutti,massimodutti.com,Gymshark,gymshark.com
+Bershka,bershka.com,Abercrombie,abercrombie.com
+Pull&Bear,pullandbear.com,Hollister,hollisterco.com
+Stradivarius,[enlace sospechoso eliminado],American Eagle,ae.com
+Oysho,oysho.com,Gap,gap.com
+Lefties,lefties.com,Old Navy,oldnavy.com
+COS,cos.com,SHEIN,shein.com
+Arket,arket.com,Cider,shopcider.com
+& Other Stories,stories.com,Fashion Nova,fashionnova.com
+Weekday,weekday.com,Princess Polly,princesspolly.com
+Monki,monki.com,Edikted,edikted.com
+ASOS,asos.com,J. Crew,jcrew.com
+Zalando,zalando.com,Madewell,madewell.com
+Urban Outfitters,urbanoutfitters.com,Cotton On,cottonon.com
+Free People,freepeople.com,New Look,newlook.com
+Anthropologie,anthropologie.com,River Island,riverisland.com

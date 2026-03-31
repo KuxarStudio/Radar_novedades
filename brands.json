@@ -1,0 +1,20 @@
+[
+  {
+    "id": "scuffers_01",
+    "name": "Scuffers",
+    "url": "https://scuffers.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "eme_studios_01",
+    "name": "Eme Studios",
+    "url": "https://emestudios.co",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "paper_straight_01",
+    "name": "Paper Straight",
+    "url": "https://paperstraight.com",
+    "strategy": "api_shopify"
+  }
+]
