@@ -16,5 +16,35 @@
     "name": "Paper Straight",
     "url": "https://paperstraight.com",
     "strategy": "api_shopify"
+  },
+  {
+    "id": "kith_01",
+    "name": "Kith",
+    "url": "https://kith.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "represent_01",
+    "name": "Represent",
+    "url": "https://representclo.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "daily_paper_01",
+    "name": "Daily Paper",
+    "url": "https://dailypaperclothing.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "patta_01",
+    "name": "Patta",
+    "url": "https://patta.nl",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "aime_leon_dore_01",
+    "name": "Aimé Leon Dore",
+    "url": "https://aimeleondore.com",
+    "strategy": "api_shopify"
   }
 ]

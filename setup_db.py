@@ -4,11 +4,10 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def crear_base_datos():
-    # Nos conectamos (esto crea el archivo si no existe)
     conn = sqlite3.connect('radar_data.db')
     cursor = conn.cursor()
     
-    # Creamos la tabla definitiva V2
+    # Hemos añadido: category, sizes, tags y is_available
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,6 +16,10 @@ def crear_base_datos():
             product_url TEXT UNIQUE,
             price REAL,
             image_url TEXT,
+            category TEXT,
+            sizes TEXT,
+            tags TEXT,
+            is_available BOOLEAN DEFAULT 1,
             is_new BOOLEAN DEFAULT 1,
             date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
@@ -24,7 +27,7 @@ def crear_base_datos():
     
     conn.commit()
     conn.close()
-    logging.info("🏗️ Base de datos V2 construida con éxito. Lista para recibir precios y fotos.")
+    logging.info("🏗️ Base de datos V3 construida. Lista para Tallas, Categorías y Stock.")
 
 if __name__ == "__main__":
     crear_base_datos()

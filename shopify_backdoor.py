@@ -11,10 +11,10 @@ HEADERS = {
 
 def scrape_shopify_api(domain):
     url = f"{domain}/products.json?limit=250"
-    logging.info(f"Desplegando Francotirador API en: {url}")
+    logging.info(f"Desplegando Francotirador API Avanzado en: {url}")
     
     productos_extraidos = []
-    urls_vistas = set() # Para evitar duplicados
+    urls_vistas = set()
     
     try:
         response = requests.get(url, headers=HEADERS, timeout=10, verify=False)
@@ -31,23 +31,50 @@ def scrape_shopify_api(domain):
                 
                 titulo = p.get('title', 'Sin título')
                 
-                # 1. Extraemos el precio (suele estar dentro de las 'variants')
+                # --- NUEVA EXTRACCIÓN AVANZADA ---
+                
+                # 1. Categoría
+                categoria = p.get('product_type', 'Uncategorized')
+                if not categoria: 
+                    categoria = 'Uncategorized'
+                
+                # 2. Etiquetas (Tags - Útiles para material, corte, color)
+                etiquetas_raw = p.get('tags', [])
+                etiquetas = ", ".join(etiquetas_raw) if isinstance(etiquetas_raw, list) else str(etiquetas_raw)
+                
+                # 3. Variantes (Para sacar Precio, Tallas y Stock)
                 variantes = p.get('variants', [])
                 precio = variantes[0].get('price', 0.0) if variantes else 0.0
                 
-                # 2. Extraemos la URL de la imagen principal
+                tallas_disponibles = []
+                hay_stock_general = False
+                
+                for var in variantes:
+                    # Si la variante tiene stock, guardamos su nombre (que suele ser la talla)
+                    if var.get('available', False):
+                        hay_stock_general = True
+                        # 'title' en variantes suele ser "M", "L", "Black / XL", etc.
+                        tallas_disponibles.append(var.get('title', ''))
+                
+                tallas_str = ", ".join(tallas_disponibles)
+                
+                # 4. Imagen
                 imagenes = p.get('images', [])
                 imagen_url = imagenes[0].get('src', '') if imagenes else ''
                 
-                # Empaquetamos todo en un diccionario
+                # Empaquetamos todo
                 productos_extraidos.append({
                     "name": titulo,
                     "url": link,
                     "price": float(precio) if precio else 0.0,
-                    "image_url": imagen_url
+                    "image_url": imagen_url,
+                    "category": categoria,
+                    "sizes": tallas_str,
+                    "tags": etiquetas,
+                    "is_available": hay_stock_general
                 })
                 
-            logging.info(f"¡Extracción rica en datos! {len(productos_extraidos)} productos con precio y foto.")
+            logging.info(f"¡Datos profundos extraídos! {len(productos_extraidos)} productos con Tallas y Categorías.")
         else:
             logging.error(f"La API está cerrada. Código: {response.status_code}")
             
