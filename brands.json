@@ -46,5 +46,41 @@
     "name": "Aimé Leon Dore",
     "url": "https://aimeleondore.com",
     "strategy": "api_shopify"
+  },
+  {
+    "id": "nude_project_01",
+    "name": "Nude Project",
+    "url": "https://nudeproject.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "corteiz_01",
+    "name": "Corteiz",
+    "url": "https://crtz.xyz",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "denim_tears_01",
+    "name": "Denim Tears",
+    "url": "https://denimtears.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "hellstar_01",
+    "name": "Hellstar",
+    "url": "https://hellstar.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "brain_dead_01",
+    "name": "Brain Dead",
+    "url": "https://wearebraindead.com",
+    "strategy": "api_shopify"
+  },
+  {
+    "id": "noah_01",
+    "name": "Noah",
+    "url": "https://noahny.com",
+    "strategy": "api_shopify"
   }
 ]
