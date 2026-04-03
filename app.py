@@ -86,26 +86,60 @@ CONFIG = cargar_config_tallas()
 
 def limpiar_talla_pro(talla_raw):
     if not talla_raw: return None
-    t = str(talla_raw).upper().strip()
-    if any(m in t for m in ["€", "$", "â‚¬"]): return None
-    if any(p == t or f" {p} " in f" {t} " for p in CONFIG['blacklist']): return None
-    match_num = re.search(r'(\d+[\s\./]\d/\d|\d+\.?\d?)', t)
-    prefijo = "EU" if "EU" in t else ("UK" if "UK" in t else ("US" if "US" in t else ("W" if "W" in t and len(t)<=5 else "")))
-    if prefijo and match_num:
-        val = match_num.group(1).replace('.0', '')
-        if prefijo == "W" and float(val) > 60: return None
-        return f"{prefijo} {val}"
-    if '/' in t: t = t.split('/')[-1].strip()
-    if t in CONFIG['mapeo']: return CONFIG['mapeo'][t]
-    try:
-        t_c = t.replace('.0', '').replace('Y', '').strip()
-        if '-' in t_c and any(c.isdigit() for c in t_c): return f"{t_c}Y"
-        if t_c.replace('.','',1).isdigit():
-            num = float(t_c)
-            if 1 <= num <= 15: return f"{int(num) if num.is_integer() else num}Y"
-            elif 16 <= num <= 60: return str(int(num) if num.is_integer() else num)
-    except: pass
-    return t if len(t) <= 4 and t != "" else None
+    
+    # 1. Separamos por la barra "/"
+    partes = str(talla_raw).upper().split('/')
+    partes_validas = []
+    
+    for p in partes:
+        t = p.strip()
+        if not t: continue
+        
+        # Filtros de basura directos
+        if any(m in t for m in ["€", "$", "Â‚¬", "CM", "OZ", "YEARS", "TEST", "120CM"]): continue
+        if any(b == t or f" {b} " in f" {t} " for b in CONFIG['blacklist']): continue
+        
+        # Mapeo directo (Ej: "ÚNICA TALLA" -> "OS")
+        if t in CONFIG['mapeo']:
+            partes_validas.append(CONFIG['mapeo'][t])
+            continue
+            
+        # Tallas de ropa universales
+        if t in ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL", "OS"]:
+            partes_validas.append(t)
+            continue
+            
+        # Regex para calzado (EU, US, UK)
+        match_num = re.search(r'(\d+[\s\./]\d/\d|\d+\.?\d?)', t)
+        prefijo = "EU" if "EU" in t else ("UK" if "UK" in t else ("US" if "US" in t else ("W" if "W" in t and len(t)<=5 else "")))
+        if prefijo and match_num:
+            val = match_num.group(1).replace('.0', '')
+            if prefijo == "W" and float(val) > 60: continue
+            partes_validas.append(f"{prefijo} {val}")
+            continue
+            
+        # Pantalones, Calcetines o Niños (números puros o rangos)
+        try:
+            t_c = t.replace('.0', '').replace('Y', '').strip()
+            if '-' in t_c and any(c.isdigit() for c in t_c):
+                partes_validas.append(t_c)
+                continue
+            if t_c.replace('.','',1).isdigit():
+                num = float(t_c)
+                if 1 <= num <= 15: 
+                    partes_validas.append(f"{int(num) if num.is_integer() else num}Y")
+                elif 16 <= num <= 60: 
+                    partes_validas.append(str(int(num) if num.is_integer() else num))
+                continue
+        except: pass
+        
+    # Si hemos rescatado partes válidas, las unimos de nuevo con " / "
+    if partes_validas:
+        # Quitamos duplicados por si acaso (ej: "OS / OS")
+        partes_unicas = list(dict.fromkeys(partes_validas))
+        return " / ".join(partes_unicas)
+        
+    return None
 
 def clasificar_producto_pro(row):
     texto = (str(row['product_name']) + " " + str(row['category'])).lower()

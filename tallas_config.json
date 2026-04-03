@@ -1,21 +1,16 @@
 {
   "mapeo": {
-    "EXTRA SMALL": "XS", "X-SMALL": "XS", "X SMALL": "XS",
+    "EXTRA SMALL": "XS", "X-SMALL": "XS", "X SMALL": "XS", "XXS": "XXS",
     "SMALL": "S",
     "MEDIUM": "M",
     "LARGE": "L",
     "EXTRA LARGE": "XL", "X-LARGE": "XL", "X LARGE": "XL",
     "EXTRA EXTRA LARGE": "XXL", "XX-LARGE": "XXL", "2XL": "XXL",
     "3XL": "XXXL",
-    "ONE SIZE": "OS", "OS": "OS", "ONE-SIZE": "OS", "ÃšNICA TALLA": "OS", "DEFAULT TITLE": "OS"
+    "ONE SIZE": "OS", "OS": "OS", "ONE-SIZE": "OS", "ÚNICA TALLA": "OS", "DEFAULT TITLE": "OS",
+    "S-M": "M", "S/M": "M", "L-XL": "XL", "L/XL": "XL"
   },
   "blacklist": [
-    "CM", "OZ", "YEARS", "GIFT", "â‚¬", "LILAC", "POWDER BLUE", "MUSHROOM", "COBALT", 
-    "AGAVE", "AMBER", "DUST", "BLACK", "BLUE", "BRIGHT", "WHITE", "BARBADOS", "CHERRY", 
-    "BEIGE", "STRIPE", "WASH", "INK", "INDIGO", "LATTE", "MATCHA", "OAT", "ROCK", 
-    "STONE", "TAUPE", "UMBER", "CINDER", "FOG", "DUNE", "CHALK", "DEFAULT", "NEUTRAL",
-    "BROWN", "CAMO", "CREAM", "EARTH", "ECRU", "FAWN", "GREEN", "GREY", "KHAKI", 
-    "MARBLE", "NAVY", "SHADOW", "STAINED", "VINTAGE", "WASHED", "HERITAGE", "JET",
-    "BROWN", "FAWN", "GREY", "GREEN", "MARBLE", "NAVY", "SHADOW", "WASHED"
+    "CM", "OZ", "YEARS", "GIFT", "€", "$", "DEFAULT", "TEST"
   ]
 }
